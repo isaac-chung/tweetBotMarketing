@@ -1,0 +1,2 @@
+clarifai-grpc==9.7.3
+tweepy==4.14.0

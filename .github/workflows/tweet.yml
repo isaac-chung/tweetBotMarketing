@@ -1,0 +1,27 @@
+name: Generate prompt and tweet
+
+on:
+  schedule:
+    - cron: "15 * * * *"
+  workflow_dispatch:
+
+env:
+  CLARIFIA_PAT_PROD: ${{ secrets.CLARIFIA_PAT_PROD }}
+  CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+  CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+
+jobs:
+  run-kudos-cron:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9.10'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - run: python tweet.py
+        
