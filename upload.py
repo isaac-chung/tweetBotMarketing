@@ -9,7 +9,7 @@ from constants import UPLOAD_USER_ID, UPLOAD_APP_ID
 class ClarifaiUploader:
     def __init__(self):
         self.userDataObject = resources_pb2.UserAppIDSet(user_id=UPLOAD_USER_ID, app_id=UPLOAD_APP_ID)
-        self.metadata = (('authorization', 'Key ' + os.environ.get("CLARIFIA_PAT_PROD")),)
+        self.metadata = (('authorization', 'Key ' + os.environ.get("CLARIFAI_PAT_PROD")),)
 
         channel = ClarifaiChannel.get_grpc_channel()
         self.stub = service_pb2_grpc.V2Stub(channel)
