@@ -1,2 +1,8 @@
 clarifai-grpc==9.7.3
+tweet-capture==0.2.1
 tweepy==4.14.0
+
+## GRPC
+grpcio==1.53.0
+protobuf==3.20.3
+googleapis-common-protos==1.55.0
