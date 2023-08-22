@@ -1,4 +1,4 @@
-clarifai-grpc==9.7.3
+clarifai-grpc==9.7.0
 tweet-capture==0.2.1
 tweepy==4.14.0
 
