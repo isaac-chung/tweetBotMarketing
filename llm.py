@@ -13,7 +13,7 @@ class ClarifaiPrompter:
     def __init__(self):
         self.prompt = PROMPT
         self.userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
-        self.metadata = (('authorization', 'Key ' + PAT),)
+        self.metadata = (('Authorization', 'Key ' + PAT),)
 
         channel = ClarifaiChannel.get_grpc_channel()
         self.stub = service_pb2_grpc.V2Stub(channel)
