@@ -6,14 +6,11 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 
 from constants import USER_ID, APP_ID, MODEL_ID, MODEL_VERSION_ID, PROMPT
 
-PAT = os.environ.get("CLARIFIA_PAT_PROD")
-
-
 class ClarifaiPrompter:
     def __init__(self):
         self.prompt = PROMPT
         self.userDataObject = resources_pb2.UserAppIDSet(user_id=USER_ID, app_id=APP_ID)
-        self.metadata = (('Authorization', 'Key ' + PAT),)
+        self.metadata = (('authorization', 'Key ' + os.environ.get("CLARIFIA_PAT_PROD")),)
 
         channel = ClarifaiChannel.get_grpc_channel()
         self.stub = service_pb2_grpc.V2Stub(channel)
@@ -40,4 +37,13 @@ class ClarifaiPrompter:
             print(post_model_outputs_response.status)
             raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
         
-        return post_model_outputs_response.outputs[0].data.raw.text
+        return post_model_outputs_response.outputs[0].data.text.raw
+    
+
+def main():
+    prompter = ClarifaiPrompter()
+    output = prompter.predict()
+    print(output)
+
+if __name__ == "__main__":
+    main()

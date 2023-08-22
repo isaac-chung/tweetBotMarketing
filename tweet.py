@@ -12,11 +12,10 @@ access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
 def clean_llm_output(raw_text: str) -> str:
     cleaned = raw_text.split('\n\n')[1]
     cleaned = cleaned.replace("\"", "")
-    cleaned = cleaned.replace("example", "")
+    cleaned = cleaned.replace("Example: ", "")
     return cleaned
 
 def main():
-
     prompter = ClarifaiPrompter()
     output = prompter.predict()
 
@@ -30,7 +29,7 @@ def main():
     response = client.create_tweet(
         text=tweet
     )
-    print(response.status_code)
+    print(response)
 
 if __name__ == "__main__":
     main()
