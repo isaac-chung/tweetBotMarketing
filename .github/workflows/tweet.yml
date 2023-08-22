@@ -13,7 +13,7 @@ env:
   ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
 
 jobs:
-  run-kudos-cron:
+  create-tweets-cron:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     steps:
