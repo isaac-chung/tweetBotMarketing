@@ -15,7 +15,7 @@ def clean_llm_output(raw_text: str) -> str:
     cleaned = raw_text.split('\n\n')[1]
     cleaned = cleaned.replace("\"", "")
     cleaned = cleaned.replace("Example: ", "")
-    cleaned = cleaned.replace("Clarifai's","@clarifai's")
+    cleaned = cleaned.replace("#Clarifai's","@clarifai's")
     cleaned = cleaned.replace("#Clarifai", "@clarifai")
     return cleaned
 
@@ -28,7 +28,7 @@ def main():
     while True:
         output = prompter.predict()
         tweet = clean_llm_output(output)
-        if len(tweet) < 280:
+        if len(tweet) < 280 and "https" in tweet:
             break
 
     client = tweepy.Client(
