@@ -15,6 +15,7 @@ def clean_llm_output(raw_text: str) -> str:
     cleaned = raw_text.split('\n\n')[1]
     cleaned = cleaned.replace("\"", "")
     cleaned = cleaned.replace("Example: ", "")
+    cleaned = cleaned.replace("Clarifai's","@clarifai's")
     return cleaned
 
 def build_tweet_url(tweet_id:str) -> str:
