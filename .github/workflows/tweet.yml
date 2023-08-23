@@ -18,7 +18,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python tweet.py
         env:
-          CLARIFIA_PAT_PROD: ${{ secrets.CLARIFIA_PAT_PROD }}
+          CLARIFAI_PAT_PROD: ${{ secrets.CLARIFIA_PAT_PROD }}
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
