@@ -16,6 +16,7 @@ jobs:
           python-version: '3.9.10'
           cache: 'pip'
       - run: pip install -r requirements.txt
+      - uses: browser-actions/setup-chrome@v1
       - run: python tweet.py
         env:
           CLARIFAI_PAT_PROD: ${{ secrets.CLARIFIA_PAT_PROD }}
