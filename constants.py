@@ -13,7 +13,7 @@ PROMOTION_HASHTAG_LINK_TUPLES = [
     ("LLM finetuning capabilities", "#llms", "to a video tutorial", "https://www.youtube.com/watch?v=Ycl7xVA2wHk"),
     ("vector search capabilities", "#llms", "", "https://www.clarifai.com/use-cases/visual-search"),
     ("generative AI capabilities", "#generativeAI", "", "https://www.clarifai.com/products/generative-ai"),
-    ("content moderation capabilities", "#llms", "", "https://www.clarifai.com/products/generative-ai"),
+    ("content moderation capabilities", "#llms", "", "https://www.clarifai.com/solutions/content-moderation"),
     ("DAM capabilities", "#Clarifai", "", "https://www.clarifai.com/solutions/digital-asset-management"),
     ("predictive maintenance capabilities", "#Clarifai", "", "https://www.clarifai.com/use-cases/predictive-maintenance"),
     ("Edge AI capabilities", "#Clarifai", "", "https://www.clarifai.com/use-cases/isr-edge-ai"),
