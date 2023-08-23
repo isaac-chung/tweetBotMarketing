@@ -1,22 +1,34 @@
+from string import Template
+
 ## For the LLM Prompting
 USER_ID = 'meta'
 APP_ID = 'Llama-2'
 MODEL_ID = 'llama2-70b-chat'
 MODEL_VERSION_ID = '6c27e86364ba461d98de95cddc559cb3'
 
+PROMPT_TEMPLATE = Template("Prepare a tweet to promote Clarifai's $highlight. Only output the raw text of the example. Do not include instructions. Include the hashtags '$hashtags'. Limit the entire example to 260 characters. Include the relevant link $optional `$link`. Limit the entire example to 260 characters including the link.")
+PROMOTION_HASHTAG_LINK_TUPLES = [
+    ("hackathon", "#llms", "to register", "https://lablab.ai/event/llama-2-hackathon-with-clarifai"),
+    ("LLM finetuning capabilities", "#llms", "to a blogpost", "https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification"),
+    ("LLM finetuning capabilities", "#llms", "to a video tutorial", "https://www.youtube.com/watch?v=Ycl7xVA2wHk"),
+    ("vector search capabilities", "#llms", "", "https://www.clarifai.com/use-cases/visual-search"),
+    ("generative AI capabilities", "#generativeAI", "", "https://www.clarifai.com/products/generative-ai"),
+    ("content moderation capabilities", "#llms", "", "https://www.clarifai.com/products/generative-ai"),
+    ("DAM capabilities", "#Clarifai", "", "https://www.clarifai.com/solutions/digital-asset-management"),
+    ("predictive maintenance capabilities", "#Clarifai", "", "https://www.clarifai.com/use-cases/predictive-maintenance"),
+    ("Edge AI capabilities", "#Clarifai", "", "https://www.clarifai.com/use-cases/isr-edge-ai"),
+    ("open positions", "#hiring", "", "https://www.clarifai.com/company/careers"),
+    ("LLM prompt capabilities", "#llms", "", "https://docs.clarifai.com/api-guide/predict/llms/#via-raw-text"),
+    ("serverless inference capabilities", "#llms", "", "https://docs.clarifai.com/api-guide/predict/llms/#via-raw-text")
+]
+
 PROMPTS = [
-    "Prepare a tweet to promote Clarifai's hackathon. Only output the raw text of the example. Do not include instructions. Include the hashtag '#Clarifai'. Limit the entire example to 220 characters. Include the registration link is https://lablab.ai/event/llama-2-hackathon-with-clarifai. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's LLM finetuning capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#llm'. Include the relevant link to a blogpost: `https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's LLM finetuning capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#llm'. Include the relevant link to a video tutorial: `https://www.youtube.com/watch?v=Ycl7xVA2wHk`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's vector search capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#llm'. Include the relevant link: `https://www.clarifai.com/use-cases/visual-search`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's generative AI capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#generativeAI'. Include the relevant link: `https://www.clarifai.com/products/generative-ai`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's content moderation capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#Clarifai'. Include the relevant link: `https://www.clarifai.com/products/generative-ai`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's DAM capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#Clarifai'. Include the relevant link: `https://www.clarifai.com/use-cases/predictive-maintenance`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's predictive maintenance capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#Clarifai'. Include the relevant link: `https://www.clarifai.com/products/generative-ai`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's Edge AI capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#Clarifai'. Include the relevant link: `https://www.clarifai.com/use-cases/isr-edge-ai`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's open positions. Only output the raw text of the example. Do not include instructions. Include the hashtag '#Clarifai'. Include the relevant link: `https://www.clarifai.com/company/careers`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's LLM prompt capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#llm'. Include the relevant link: `https://docs.clarifai.com/api-guide/predict/llms/#via-raw-text`. Limit the entire example to 260 characters including the link.",
-    "Prepare a tweet to promote Clarifai's serverless inference capabilities. Only output the raw text of the example. Do not include instructions. Include the hashtag '#llm'. Include the relevant link: `https://docs.clarifai.com/api-guide/predict/llms/#via-raw-text`. Limit the entire example to 260 characters including the link."
+    PROMPT_TEMPLATE.safe_substitute(
+        highlight=tup[0], 
+        hashtags=tup[1],
+        optional=tup[2],
+        link=tup[3]
+    ) for tup in PROMOTION_HASHTAG_LINK_TUPLES
 ]
 
 ## For building the HTML
