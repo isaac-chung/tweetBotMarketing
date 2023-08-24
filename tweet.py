@@ -14,7 +14,6 @@ access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
 def clean_llm_output(raw_text: str) -> str:
     cleaned = raw_text.split('\n\n')[1]
     cleaned = cleaned.replace("\"", "")
-    cleaned = cleaned.replace("Example:", "")
     cleaned = cleaned.replace("\n\n", "")
     cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
     cleaned = cleaned.replace(" Clarifai "," @clarifai ")

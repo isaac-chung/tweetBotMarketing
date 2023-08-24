@@ -6,7 +6,7 @@ APP_ID = 'Llama-2'
 MODEL_ID = 'llama2-70b-chat'
 MODEL_VERSION_ID = '6c27e86364ba461d98de95cddc559cb3'
 
-PROMPT_TEMPLATE = Template("Prepare a tweet to promote Clarifai's $highlight. Only output the raw text of the example. Do not include instructions. Include the hashtags '$hashtags'. Limit the entire example to 260 characters. Include the relevant link $optional `$link`. Limit the entire example to 260 characters including the link.")
+PROMPT_TEMPLATE = Template("Prepare an example tweet to promote Clarifai's $highlight. Only output the raw text of the example. Do not include instructions. Include the hashtags '$hashtags'. Limit the entire example to 260 characters. Include the relevant link $optional `$link`. Limit the entire example to 260 characters including the link.")
 PROMOTION_HASHTAG_LINK_TUPLES = [
     ("hackathon", "#llms", "to register", "https://lablab.ai/event/llama-2-hackathon-with-clarifai"),
     ("LLM finetuning capabilities", "#llms", "to a blogpost", "https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification"),
