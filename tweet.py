@@ -26,7 +26,7 @@ def clean_llm_output(raw_text: str) -> str:
         cleaned = cleaned.replace("#Clarifai's","@clarifai's")
         cleaned = cleaned.replace("#Clarifai", "@clarifai")
     except:
-        raise("Raw output: %s" % raw_text)
+        raise Exception("Raw output: %s, cleaned:%s" % (raw_text, str(cleaned)))
     return cleaned
 
 def build_tweet_url(tweet_id:str) -> str:
