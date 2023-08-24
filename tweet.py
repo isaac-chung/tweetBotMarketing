@@ -12,16 +12,21 @@ access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
 
 
 def clean_llm_output(raw_text: str) -> str:
-    cleaned = raw_text.split('\"')[1]
-    if len(cleaned) == 0:
-        cleaned = raw_text.replace("\n\n", "")
+    try:
+        cleaned = raw_text.split('\"')
+        if len(cleaned) == 0:
+            cleaned = raw_text.replace("\n\n", "")
+        else:
+            cleaned = cleaned[1]
 
-    cleaned = cleaned.replace("\"", "")
-    cleaned = cleaned.replace("Example:", "")
-    cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
-    cleaned = cleaned.replace(" Clarifai "," @clarifai ")
-    cleaned = cleaned.replace("#Clarifai's","@clarifai's")
-    cleaned = cleaned.replace("#Clarifai", "@clarifai")
+        cleaned = cleaned.replace("\"", "")
+        cleaned = cleaned.replace("Example:", "")
+        cleaned = cleaned.replace(" Clarifai's"," @clarifai's")
+        cleaned = cleaned.replace(" Clarifai "," @clarifai ")
+        cleaned = cleaned.replace("#Clarifai's","@clarifai's")
+        cleaned = cleaned.replace("#Clarifai", "@clarifai")
+    except:
+        raise("Raw output: %s" % raw_text)
     return cleaned
 
 def build_tweet_url(tweet_id:str) -> str:
