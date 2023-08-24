@@ -14,7 +14,7 @@ access_token_secret = os.environ.get("ACCESS_TOKEN_SECRET")
 def clean_llm_output(raw_text: str) -> str:
     try:
         cleaned = raw_text.split('\"')
-        if len(cleaned) == 0:
+        if len(cleaned) <= 1:
             cleaned = raw_text.replace("\n\n", "")
         else:
             cleaned = cleaned[1]
