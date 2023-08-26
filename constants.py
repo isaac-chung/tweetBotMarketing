@@ -8,7 +8,6 @@ MODEL_VERSION_ID = '6c27e86364ba461d98de95cddc559cb3'
 
 PROMPT_TEMPLATE = Template("Prepare a tweet to promote $highlight. Only output the raw text of the tweet without any instructions or any preamble. Include the hashtags '$hashtags'. Include the relevant link $optional `$link`. Limit the tweet to 260 characters including the link.")
 PROMOTION_HASHTAG_LINK_TUPLES = [
-    ("Clarifai's hackathon", "#llms", "to register", "https://lablab.ai/event/llama-2-hackathon-with-clarifai"),
     ("Clarifai's LLM finetuning capabilities", "#llms", "to a blogpost", "https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification"),
     ("Clarifai's LLM finetuning capabilities", "#llms", "to a video tutorial", "https://www.youtube.com/watch?v=Ycl7xVA2wHk"),
     ("Clarifai's vector search capabilities", "#llms", "", "https://www.clarifai.com/use-cases/visual-search"),
