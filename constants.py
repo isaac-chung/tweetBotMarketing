@@ -12,6 +12,7 @@ PROMOTION_HASHTAG_LINK_TUPLES = [
     ("100 Clarifai hackathon projects", "#ai", "to a blogpost", "https://www.clarifai.com/blog/100-clarifai-hackathon-projects-from-2018"),
     ("generative AI", "#genai", "to a blogpost", "https://www.clarifai.com/blog/generative-ai-and-large-language-models"),
     ("running code llama on Clarifai", "#ai #llms", "", "https://www.clarifai.com/blog/run-code-llama-with-an-api-1"),
+    ("example Clarifai jupyter notebooks", "#ai #python", "", "https://github.com/Clarifai/colab-notebooks"),
     ("Clarifai's LLM finetuning capabilities", "#llms", "to a video tutorial", "https://www.youtube.com/watch?v=Ycl7xVA2wHk"),
     ("Clarifai's vector search capabilities", "#llms", "", "https://www.clarifai.com/use-cases/visual-search"),
     ("Clarifai's generative AI capabilities", "#generativeAI", "", "https://www.clarifai.com/products/generative-ai"),
