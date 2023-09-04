@@ -17,7 +17,7 @@ class ClarifaiPrompter:
         channel = ClarifaiChannel.get_grpc_channel()
         self.stub = service_pb2_grpc.V2Stub(channel)
 
-    def _predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID) -> str:
+    def _predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID):
         post_model_outputs_response = self.stub.PostModelOutputs(
             service_pb2.PostModelOutputsRequest(
                 user_app_id=self.userDataObject,
@@ -36,7 +36,7 @@ class ClarifaiPrompter:
             metadata=self.metadata
         )
         
-    def predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID, retries=3):
+    def predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID, retries=3) -> str:
         for i in range(retries):
             post_model_outputs_response = self._predict(model_id, model_version_id)
             if post_model_outputs_response.status.code == status_code_pb2.SUCCESS:
