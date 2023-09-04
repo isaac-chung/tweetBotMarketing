@@ -1,5 +1,6 @@
 import os
 import random
+import time
 
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
@@ -16,7 +17,7 @@ class ClarifaiPrompter:
         channel = ClarifaiChannel.get_grpc_channel()
         self.stub = service_pb2_grpc.V2Stub(channel)
 
-    def predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID) -> str:
+    def _predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID) -> str:
         post_model_outputs_response = self.stub.PostModelOutputs(
             service_pb2.PostModelOutputsRequest(
                 user_app_id=self.userDataObject,
@@ -34,12 +35,18 @@ class ClarifaiPrompter:
             ),
             metadata=self.metadata
         )
-        if post_model_outputs_response.status.code != status_code_pb2.SUCCESS:
-            print(post_model_outputs_response.status)
-            raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+        
+    def predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID, retries=3):
+        for i in range(retries):
+            post_model_outputs_response = self._predict(model_id, model_version_id)
+            if post_model_outputs_response.status.code == status_code_pb2.SUCCESS:
+                return post_model_outputs_response.outputs[0].data.text.raw
+            if i == retries - 1:
+                print(post_model_outputs_response.status)
+                raise Exception("Post model outputs failed, status: " + post_model_outputs_response.status.description)
+            print(f"Model prediction trial {i} failed. Sleeping for one minute.")
+            time.sleep(60)
 
-        return post_model_outputs_response.outputs[0].data.text.raw
-    
 
 def main():
     prompter = ClarifaiPrompter()
