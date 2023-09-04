@@ -18,7 +18,7 @@ class ClarifaiPrompter:
         self.stub = service_pb2_grpc.V2Stub(channel)
 
     def _predict(self, model_id=MODEL_ID, model_version_id=MODEL_VERSION_ID):
-        post_model_outputs_response = self.stub.PostModelOutputs(
+        return self.stub.PostModelOutputs(
             service_pb2.PostModelOutputsRequest(
                 user_app_id=self.userDataObject,
                 model_id=model_id,
