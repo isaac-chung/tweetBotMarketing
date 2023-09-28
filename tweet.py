@@ -19,6 +19,12 @@ def clean_llm_output(raw_text: str) -> str:
         else:
             cleaned = cleaned[1]
 
+        sub_list = cleaned.split("\n\n")
+        if "Sure!" in sub_list[0] or "Here's a" in sub_list[0]:
+            cleaned = "\n\n".join(sub_list[1:])
+        else:
+            cleaned = "\n\n".join(sub_list)
+
         cleaned = cleaned.replace("\"", "")
         cleaned = cleaned.replace("Example:", "")
         cleaned = cleaned.replace("Here's a possible tweet:", "")
