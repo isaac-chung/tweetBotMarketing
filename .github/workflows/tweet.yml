@@ -2,7 +2,7 @@ name: Generate prompt and tweet
 
 on:
   schedule:
-    - cron: "15 * * * *"
+    - cron: "10,30,50 * * * *"
   workflow_dispatch:
 
 jobs:

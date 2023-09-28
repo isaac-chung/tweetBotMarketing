@@ -4,9 +4,9 @@ from string import Template
 USER_ID = 'meta'
 APP_ID = 'Llama-2'
 MODEL_ID = 'llama2-70b-chat'
-MODEL_VERSION_ID = '6c27e86364ba461d98de95cddc559cb3'
+MODEL_VERSION_ID = 'acba9c1995f8462390d7cb77d482810b'
 
-PROMPT_TEMPLATE = Template("Prepare a tweet to promote $highlight. Only output the raw text of the tweet without any instructions or any preamble. Include the hashtags '$hashtags'. Include the relevant link $optional `$link`. Limit the tweet to 260 characters including the link.")
+PROMPT_TEMPLATE = Template("Write a haiku to promote $highlight. Only output the raw text of the tweet without any instructions or any preamble. Include the hashtags '$hashtags'. Include the relevant link $optional `$link`. Limit the tweet to 260 characters including the link.")
 PROMOTION_HASHTAG_LINK_TUPLES = [
     ("Clarifai's LLM Hackathon with Streamlit", "#llms #hackathon", "", "https://streamlit.io/community/llm-hackathon-2023?utm_campaign=2023-Q3%20LLM%20Hackathon&utm_source=clarifai&utm_medium=partner"),
     ("Clarifai's LLM finetuning capabilities", "#llms", "to a blogpost", "https://www.clarifai.com/blog/fine-tuning-gpt-neo-for-text-classification"),
