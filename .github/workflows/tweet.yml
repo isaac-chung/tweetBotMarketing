@@ -2,26 +2,25 @@ name: Generate prompt and tweet
 
 on:
   schedule:
-    - cron: "10,30,50 * * * *"
+    - cron: "10 10 * * *"
   workflow_dispatch:
 
 jobs:
   create-tweets-cron:
     runs-on: ubuntu-20.04
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v3 
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9.10'
           cache: 'pip'
       - run: pip install -r requirements.txt
       - uses: browser-actions/setup-chrome@v1
-      - run: python tweet.py
+      - run: python read_sitemap.py
         env:
           CLARIFAI_PAT_PROD: ${{ secrets.CLARIFAI_PAT_PROD }}
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-        
