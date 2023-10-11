@@ -23,4 +23,4 @@ TWITTER_USER_ID='i48456'
 
 ## For uploading the screenshot to clarifai
 UPLOAD_USER_ID = 'Isaac'
-UPLOAD_APP_ID = 'tweet-screenshots'
+UPLOAD_APP_ID = 'q4-tweet-screenshots'
