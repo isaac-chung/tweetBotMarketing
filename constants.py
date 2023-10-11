@@ -14,6 +14,10 @@ PROMPT_TEMPLATE = Template("Write a short tweet to promote $topic. \
                            relevant link `$link`. Limit the tweet \
                            to 260 characters including the link.")
 
+YEAR_ONWARDS = 2023
+SITEMAP_URL = "https://www.clarifai.com/sitemap.xml"
+LASTMOD = "lastmod"
+
 ## For building the HTML
 TWITTER_USER_ID='i48456'
 
