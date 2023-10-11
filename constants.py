@@ -6,7 +6,7 @@ APP_ID = 'chat-completion'
 MODEL_ID = 'GPT-4'
 MODEL_VERSION_ID = '4aa760933afa4a33a0e5b4652cfa92fa'
 
-PROMPT_TEMPLATE = Template("Write a short tweet to promote $topic. \
+PROMPT_TEMPLATE = Template("$system Write a short tweet to promote $topic. \
                            Only output the raw text of the tweet \
                            without any instructions or any preamble. \
                            Include the tag '@clarifai'. Include the \
@@ -17,6 +17,17 @@ PROMPT_TEMPLATE = Template("Write a short tweet to promote $topic. \
 YEAR_ONWARDS = 2023
 SITEMAP_URL = "https://www.clarifai.com/sitemap.xml"
 LASTMOD = "lastmod"
+
+SYSTEM_PROMPTS = [
+    "",
+    "You are a pirate.",
+    "You are an Australian.",
+    "You are German.",
+    "You are Chinese.",
+    "You are Japanese.",
+    "You are Spanish.",
+    "You are French."
+]
 
 ## For building the HTML
 TWITTER_USER_ID='i48456'

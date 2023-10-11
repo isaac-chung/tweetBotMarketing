@@ -34,12 +34,25 @@ def clean_llm_output(raw_text: str) -> str:
         cleaned = cleaned.replace("#Clarifai's","@clarifai's")
         cleaned = cleaned.replace("#Clarifai", "@clarifai")
         cleaned = cleaned.replace('Clarifai!', '@clarifai!')
-    except:
+    except Exception:
         raise Exception("Raw output: %s, cleaned:%s" % (raw_text, str(cleaned)))
     return cleaned
 
 def build_tweet_url(tweet_id:str) -> str:
     return "https://twitter.com/%s/status/%s" %(TWITTER_USER_ID, tweet_id)
+
+
+def post_tweet(tweet: str) -> str:
+    client = tweepy.Client(
+        consumer_key=consumer_key, consumer_secret=consumer_secret,
+        access_token=access_token, access_token_secret=access_token_secret
+    )
+
+    response = client.create_tweet(
+        text=tweet
+    )
+    return response.data['id']
+
 
 def main():
     prompter = ClarifaiPrompter()
@@ -63,7 +76,7 @@ def main():
 
     tweet_url = build_tweet_url(tweet_id)
     image_path = f"{tweet_id}.png"
-    
+
     ## https://github.com/xacnio/tweetcapture/blob/main/tweetcapture/examples/tweet_screenshot.py
     from tweetcapture import TweetCapture
     import asyncio
