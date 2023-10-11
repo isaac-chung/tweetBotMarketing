@@ -5,7 +5,8 @@ import pandas as pd
 import random
 import xmltodict
 
-from constants import PROMPT_TEMPLATE, YEAR_ONWARDS, SITEMAP_URL, LASTMOD
+from constants import (PROMPT_TEMPLATE, YEAR_ONWARDS,
+                       SITEMAP_URL, LASTMOD, SYSTEM_PROMPTS)
 from tweet import build_tweet_url
 from llm import ClarifaiPrompter
 from upload import ClarifaiUploader
@@ -33,7 +34,11 @@ def main():
     topic = chosen_url.split("/")[-1].replace('-',' ')
     print(f"{topic=}")
 
-    prompt = PROMPT_TEMPLATE.safe_substitute(topic=topic, link=chosen_url)
+    system_prompt = random.choice(SYSTEM_PROMPTS)
+    print(f"{system_prompt=}")
+
+    prompt = PROMPT_TEMPLATE.safe_substitute(system=system_prompt,
+                                             topic=topic, link=chosen_url)
     p = ClarifaiPrompter()
 
     while True:
