@@ -38,8 +38,8 @@ def clean_llm_output(raw_text: str) -> str:
         raise Exception("Raw output: %s, cleaned:%s" % (raw_text, str(cleaned)))
     return cleaned
 
-def build_tweet_url(tweet_id:str) -> str:
-    return "https://twitter.com/%s/status/%s" %(TWITTER_USER_ID, tweet_id)
+def build_tweet_url(tweet_id:str, twitter_user_id:str = TWITTER_USER_ID) -> str:
+    return "https://twitter.com/%s/status/%s" %(twitter_user_id, tweet_id)
 
 
 def post_tweet(tweet: str) -> str:
