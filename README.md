@@ -23,11 +23,18 @@ To call GPT-4, use Clarifai. Sign up for a free account and get a personal acces
 ## Usage
 
 Use this by either running the script locally or via Github Actions after forking this repository. For both options, replace the following
-- constants.py TWITTER_USER_ID, SITEMAP_URL
+- constants.py TWITTER_USER_ID
 
 Install the requirements by running
 ```
 pip install -r requirements.txt
+```
+
+Setup secrets and keys (see subsections below). Afterwards, run the scripts as such:
+```
+python read_sitemap.py --sitemap_url URL \
+--twitter_user_id USER_HANDLE \
+--screenshot_and_upload True
 ```
 
 ### Local
